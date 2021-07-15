@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:property-placeholder location="classpath:appProperties.properties"/>
+
+    <bean id = "myPet"
+          class = "com.kate.spring.Cat">
+    </bean>
+
+    <!--
+    <bean id = "myPerson"
+          class = "com.kate.spring.Person">
+        <constructor-arg ref="myPet"/>
+    </bean>
+    -->
+
+    <bean id = "myPerson"
+          class = "com.kate.spring.Person">
+        <property name="p" ref="myPet" />  <!-- p становится setP-->
+        <property name="surname" value="${person.surname}"/> <!-- p становится setSurname-->
+        <property name="age" value="${person.age}"/> <!-- value="27"-->
+    </bean>
+
+
+</beans>
